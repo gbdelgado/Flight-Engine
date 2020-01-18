@@ -86,10 +86,26 @@ export default class Generator {
           temp = this.random(60,70);
         }
         case 'New York City':{
-          temp = this.random(0,70);
+           //midnight to noon
+           if(time.get('hour') >= 0 && time.get('hour') <= 12){
+            temp = this.random(0,50);
+          } else if (time.get('hour') > 12 && time.get('hour') <= 17){
+            temp = this.random(50, 70);
+          } else {
+            temp = this.random(0,50);
+          }
+          break;
         }
         case 'Dallas-Fort Worth':{
-          temp = this.random(60,100);
+           //midnight to noon
+           if(time.get('hour') >= 0 && time.get('hour') <= 12){
+            temp = this.random(60,80);
+          } else if (time.get('hour') > 12 && time.get('hour') <= 17){
+            temp = this.random(80, 100);
+          } else {
+            temp = this.random(60, 80);
+          }
+          break;
         }
       }
       return temp;
