@@ -67,6 +67,69 @@ export default class Generator {
 
     const arrivalTime = departureTime.plus({ hours: duration.hours, minutes: duration.minutes }).setZone(destination.timezone);
 
+    //Calulate Temperature
+    let getTemperature = (startDes: Airport) => {
+      var city = startDes.city;
+      if (city == 'Chicago') {
+        return this.random(0, 20);
+      } else {
+        return 20000;
+      }
+    }
+
+    const temp: Temperature = {
+      currentTemperature: getTemperature(origin)
+    }
+
+    let getSeatPitch = (plane: Aircraft) => {
+      if (plane.model == '738') {
+        return 30;
+      } else if (plane.model == '757') {
+        return 32;
+      } else {
+        return 31;
+      }
+    }
+
+    const pitch: SeatPitch = {
+      totalSeatPitch: getSeatPitch(randAircraft)
+    }
+
+    let getAccomidies = (plane: Aircraft) => {
+      let wifi, power, overhead, seatback;
+      switch (plane.model) {
+        case '738': {
+          wifi = true;
+          power = false;
+          overhead = false;
+          seatback = true;
+          break;
+        }
+        case '757': {
+          wifi = true;
+          power = false;
+          overhead = false;
+          seatback = true;
+          break;
+        }
+        default: {
+          wifi = true;
+          power = false;
+          overhead = false;
+          seatback = true;
+          break;
+        }
+      }
+      const accomodies: Accomodations = {
+        wifi: wifi,
+        power: power,
+        overhead: overhead,
+        seatback: seatback
+      }
+      return accomodies;
+    }
+
+
     return {
       flightNumber,
       origin,
@@ -76,6 +139,9 @@ export default class Generator {
       departureTime: departureTime.toISO(),
       arrivalTime: arrivalTime.toISO(),
       aircraft: randAircraft,
+      temperature: temp,
+      seatPitch: pitch,
+      accomodies: getAccomidies(randAircraft)
     };
   }
 }
