@@ -73,9 +73,9 @@ export default class Generator {
       switch(place.city){
         case 'Chicago':{
           //midnight to noon
-          if(time.getUTCHours() >= 0 && time.getUTCHours() <= 12){
+          if(time.get('hour') >= 0 && time.get('hour') <= 12){
             temp = this.random(0,30);
-          } else if (time.getUTCHours() > 12 && time.getUTCHours() <= 17){
+          } else if (time.get('hour') > 12 && time.get('hour') <= 17){
             temp = this.random(30, 60);
           } else {
             temp = this.random(0, 30);
