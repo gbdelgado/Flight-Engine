@@ -52,7 +52,8 @@ declare interface Flight {
   duration: FlightDuration;
   departureTime: string;
   arrivalTime: string;
-  temperature: Temperature;
+  originTemp: Temperature;
+  arrivalTemp: Temperature;
   seatPitch: SeatPitch;
   accomodies: Accomodations;
 }

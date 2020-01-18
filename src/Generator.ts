@@ -95,9 +95,6 @@ export default class Generator {
       return temp;
     }
 
-    const temp: Temperature = {
-      currentTemperature: getTemperature(origin)
-    }
 
     let getSeatPitch = (plane: Aircraft) => {
       if (plane.model == '738') {
@@ -147,6 +144,13 @@ export default class Generator {
       return accomodies;
     }
 
+    const arrivalTemp: Temperature = {
+      currentTemperature: getTemperature(destination, arrivalTime)
+    }
+    const originTemp: Temperature = {
+      currentTemperature: getTemperature(origin, departureTime)
+    }
+
 
     return {
       flightNumber,
@@ -157,7 +161,8 @@ export default class Generator {
       departureTime: departureTime.toISO(),
       arrivalTime: arrivalTime.toISO(),
       aircraft: randAircraft,
-      temperature: temp,
+      originTemp: originTemp,
+      arrivalTemp: arrivalTemp,
       seatPitch: pitch,
       accomodies: getAccomidies(randAircraft)
     };
