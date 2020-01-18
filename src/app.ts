@@ -12,7 +12,6 @@ const app = express();
 app.use(cors());
 
 
-
 // Inject middleware to parse JSON body objects
 app.use(bodyParser.json());
 
