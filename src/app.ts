@@ -5,7 +5,6 @@ import { DateTime } from 'luxon';
 import Generator from './Generator';
 import airports from './Data/airports';
 import FlightCache from './FlightCache';
-import fs from 'fs';
 
 const app = express();
 
@@ -22,12 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Establish Routing
 app.get('/', (_: express.Request, res: express.Response) => {
-  fs.read('./index.html', function(err, html){
-    if(err){throw err};
-    res.writeHeader(200, {"Content-Type": "text/html"});
-    res.write(html);
-    res.end();
-  })
+  res.send("hi");
 });
 
 // /flights
