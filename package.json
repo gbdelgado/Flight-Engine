@@ -2,10 +2,10 @@
   "name": "flight-engine",
   "version": "1.0.0",
   "description": "Mock flight data delivered simply and quickly without a database.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "npm-run-all -l build -p build:watch start:watch",
-    "start": "node index.js",
+    "start": "node dist/index.js",
     "start:watch": "nodemon -w dist -e js dist/index.js",
     "build": "tsc -p src/ --pretty",
     "build:watch": "npm run build -- -w",
