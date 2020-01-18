@@ -68,11 +68,18 @@ export default class Generator {
     const arrivalTime = departureTime.plus({ hours: duration.hours, minutes: duration.minutes }).setZone(destination.timezone);
 
     //Calulate Temperature
-    let getTemperature = (startDes: Airport) => {
+    let getTemperature = (place: Airport,time: DateTime ) => {
       let temp;
-      switch(startDes.city){
+      switch(place.city){
         case 'Chicago':{
-          temp = this.random(0, 60);
+          //midnight to noon
+          if(time.getHours() >= 0 && time.getHours() <= 12){
+            temp = this.random(0,30);
+          } else if (time.getHours() > 12 && time.getHours() <= 17){
+            temp = this.random(30, 60);
+          } else {
+            temp = this.random(0, 30);
+          }
           break;
         }
         case 'Los Angeles':{
@@ -94,7 +101,7 @@ export default class Generator {
 
     let getSeatPitch = (plane: Aircraft) => {
       if (plane.model == '738') {
-        return 30;
+        
       } else if (plane.model == '757') {
         return 32;
       } else {
