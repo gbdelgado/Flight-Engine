@@ -114,7 +114,7 @@ export default class Generator {
 
     let getSeatPitch = (plane: Aircraft) => {
       if (plane.model == '738') {
-        
+        return 30;
       } else if (plane.model == '757') {
         return 32;
       } else {

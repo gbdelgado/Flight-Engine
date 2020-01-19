@@ -8,9 +8,8 @@ import FlightCache from './FlightCache';
 
 const app = express();
 
-// Enable cross origin requests
+// Enable cross origin requests 
 app.use(cors());
-
 
 // Inject middleware to parse JSON body objects
 app.use(bodyParser.json());
